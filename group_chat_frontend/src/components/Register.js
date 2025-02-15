@@ -9,19 +9,27 @@ function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/api/register/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, email, password }),
-    });
 
-    if (response.ok) {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/register/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Registration failed.");
+      }
+
       const data = await response.json();
       localStorage.setItem("access", data.tokens.access);
       localStorage.setItem("refresh", data.tokens.refresh);
+      localStorage.setItem("username", data.user.username);
+
+      console.log(localStorage.getItem("access"));
       navigate("/home");
-    } else {
-      alert("Registration failed");
+    } catch (error) {
+      alert(error.message);
     }
   };
 

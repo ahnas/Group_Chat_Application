@@ -8,20 +8,27 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    
-    const response = await fetch("http://127.0.0.1:8000/api/login/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }), 
-    });
 
-    if (response.ok) {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Login failed. Please check your credentials.");
+      }
+
       const data = await response.json();
       localStorage.setItem("access", data.tokens.access);
       localStorage.setItem("refresh", data.tokens.refresh);
+      localStorage.setItem("username", data.user.username);
+
+      console.log(localStorage.getItem("access"));
       navigate("/home");
-    } else {
-      alert("Login failed. Please check your email and password.");
+    } catch (error) {
+      alert(error.message);
     }
   };
 
@@ -29,20 +36,8 @@ function Login() {
     <div className="container">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button type="submit">Login</button>
       </form>
       <p>Don't have an account? <Link to="/register">Register here</Link></p>
