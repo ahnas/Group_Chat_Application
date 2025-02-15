@@ -56,6 +56,8 @@ Run the Django server to enable WebSocket connections:
 
 ```bash
 cd group_chat_backend
+py manage.py makemigrations
+py manage.py migrate
 daphne -b 127.0.0.1 -p 8000 backend.asgi:application
 
 # python manage.py runserver
