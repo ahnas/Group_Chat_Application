@@ -8,6 +8,7 @@ function Home() {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const socketRef = useRef(null);
+  const chatEndRef = useRef(null); 
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -26,10 +27,10 @@ function Home() {
     socketRef.current = new WebSocket("ws://127.0.0.1:8000/ws/chat/");
 
     socketRef.current.onopen = () => console.log("WebSocket Connected");
-    
+
     socketRef.current.onmessage = (event) => {
       const newMessage = JSON.parse(event.data);
-      
+
       setMessages((prev) => {
         if (!prev.some(msg => msg.sender === newMessage.sender && msg.message === newMessage.message && msg.timestamp === newMessage.timestamp)) {
           return [...prev, newMessage];
@@ -61,10 +62,17 @@ function Home() {
     navigate("/login");
   };
 
+  useEffect(() => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   return (
     <div className="chat-container">
       <header className="chat-header">
-        <h2>Welcome, {username}!</h2>
+        <h2>Welcome, {username}! <h6 className="m-0">Email : {localStorage.getItem("email")}</h6></h2>
+
         <button onClick={handleLogout} className="logout-btn">Logout</button>
       </header>
 
@@ -76,10 +84,15 @@ function Home() {
             <span className="timestamp">{msg.timestamp}</span>
           </div>
         ))}
+        <div ref={chatEndRef} /> 
       </div>
 
       <div className="chat-input">
-        <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Type a message..." />
+        <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Type a message..." onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleSendMessage();
+          }
+        }} />
         <button onClick={handleSendMessage}>Send</button>
       </div>
     </div>

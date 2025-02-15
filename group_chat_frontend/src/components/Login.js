@@ -24,9 +24,9 @@ function Login() {
       localStorage.setItem("access", data.tokens.access);
       localStorage.setItem("refresh", data.tokens.refresh);
       localStorage.setItem("username", data.user.username);
+      localStorage.setItem("email", data.user.email);
 
-      console.log(localStorage.getItem("access"));
-      navigate("/home");
+      window.location.href = "/home";
     } catch (error) {
       alert(error.message);
     }
