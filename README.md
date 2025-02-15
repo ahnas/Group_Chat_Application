@@ -1,4 +1,6 @@
 
+![Group Chat Application](https://github.com/user-attachments/assets/1b469dd3-69b5-4b40-9981-d5d572ef4ee3)
+
 # Group Chat Application
 
 This is a real-time Group chat application built with React for the frontend and Django for the backend. The application allows users to register,log in, send and receive messages via WebSocket, and interact in a chat environment.
