@@ -1,0 +1,7 @@
+group_chat_frontend/node_modules
+group_chat_frontend/package-lock.json
+
+group_chat_backend/venv
+__pycache__
+migrations
+db.sqlite3
