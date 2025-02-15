@@ -82,6 +82,68 @@ The application should now be running on `http://localhost:3000` for the fronten
 4. Press "Enter" to send a message or click the "Send" button.
 5. Click the "Logout" button to log out.
 
+# API Documentation
+
+## User Registration API
+
+This API allows users to register, retrieve, update, and delete user data.
+
+### **Base URL**
+```
+http://127.0.0.1:8000/api/register/
+```
+
+---
+
+## **Endpoints & Methods**
+
+### **1. Get All Users**
+**Request:**  
+```http
+GET http://127.0.0.1:8000/api/register/
+```
+
+---
+
+### **2. Register a New User**
+**Request:**  
+```http
+POST http://127.0.0.1:8000/api/register/
+```
+**Request Body:**
+```json
+{
+  "username": "",
+  "password": "",
+  "email": ""
+}
+```
+
+---
+
+### **3. Update User (Requires User ID)**
+**Request:**  
+```http
+PUT http://127.0.0.1:8000/api/register/{id}/
+```
+**Request Body:**
+```json
+{
+  "username": "",
+  "password": ""
+}
+```
+
+---
+
+### **4. Delete User (Requires User ID)**
+**Request:**  
+```http
+DELETE http://127.0.0.1:8000/api/register/{id}/
+```
+
+---
+
 ## Technologies Used
 
 - **Frontend**: React, React Router
