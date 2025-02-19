@@ -7,7 +7,9 @@ SECRET_KEY = 'django-insecure-)haotqp5a-o9@e5v&xzvj)51&c-%fu$a#(2e_wje)fnn-f18db
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*","group-chat-application-chi.vercel.app"]
+
+CSRF_TRUSTED_ORIGINS = ["https://group-chat-application-chi.vercel.app"]
 
 
 INSTALLED_APPS = [
