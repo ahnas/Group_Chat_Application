@@ -24,7 +24,7 @@ function Home() {
   }, [navigate]);
 
   const connectWebSocket = () => {
-    socketRef.current = new WebSocket("ws://127.0.0.1:8000/ws/chat/");
+    socketRef.current = new WebSocket("ws://group-chat-application-chi.vercel.app/ws/chat/");
 
     socketRef.current.onopen = () => console.log("WebSocket Connected");
 
