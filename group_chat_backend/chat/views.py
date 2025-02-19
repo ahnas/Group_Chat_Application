@@ -19,8 +19,8 @@ class ApiRootView(APIView):
     permission_classes = [AllowAny]
     def get(self, request, *args, **kwargs):
         api_urls = {
-            'register': 'http://127.0.0.1:8000/api/register/',
-            'login': 'http://127.0.0.1:8000/api/login/',
+            'register': 'https://group-chat-application-juc0.onrender.com/api/register/',
+            'login': 'https://group-chat-application-juc0.onrender.com/api/login/',
         }
         return Response(api_urls)
 

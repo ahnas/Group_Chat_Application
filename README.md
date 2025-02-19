@@ -92,7 +92,7 @@ This API allows users to register, retrieve, update, and delete user data.
 
 ### **Base URL**
 ```
-http://127.0.0.1:8000/api/register/
+https://group-chat-application-juc0.onrender.com/api/register/
 ```
 
 ---
@@ -102,7 +102,7 @@ http://127.0.0.1:8000/api/register/
 ### **1. Get All Users**
 **Request:**  
 ```http
-GET http://127.0.0.1:8000/api/register/
+GET https://group-chat-application-juc0.onrender.com/api/register/
 ```
 
 ---
@@ -110,7 +110,7 @@ GET http://127.0.0.1:8000/api/register/
 ### **2. Register a New User**
 **Request:**  
 ```http
-POST http://127.0.0.1:8000/api/register/
+POST https://group-chat-application-juc0.onrender.com/api/register/
 ```
 **Request Body:**
 ```json
@@ -126,7 +126,7 @@ POST http://127.0.0.1:8000/api/register/
 ### **3. Update User (Requires User ID)**
 **Request:**  
 ```http
-PUT http://127.0.0.1:8000/api/register/{id}/
+PUT https://group-chat-application-juc0.onrender.com/api/register/{id}/
 ```
 **Request Body:**
 ```json
@@ -141,7 +141,7 @@ PUT http://127.0.0.1:8000/api/register/{id}/
 ### **4. Delete User (Requires User ID)**
 **Request:**  
 ```http
-DELETE http://127.0.0.1:8000/api/register/{id}/
+DELETE https://group-chat-application-juc0.onrender.com/api/register/{id}/
 ```
 
 ---
