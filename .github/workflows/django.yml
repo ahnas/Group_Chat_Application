@@ -18,10 +18,13 @@ jobs:
           python-version: "3.10"
 
       - name: Install Dependencies
-        run: pip install -r requirements.txt
-
+        run: | 
+          cd group_chat_backend
+          pip install -r requirements.txt
+        
       - name: Run Migrations
         run: |
+          cd group_chat_backend
           python manage.py makemigrations
           python manage.py migrate
 
